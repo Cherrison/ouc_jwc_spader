@@ -73,7 +73,7 @@ def doLogin():
 
 if __name__ == '__main__':
     # xn 就是年份    xq 夏季  0  秋季 1 春季 2   xh 就是学号
-    params = "xn="+ "2018" + "&xq="+"1" + "&xh=" + userid['username']
+    params = "xn="+ "2019" + "&xq="+"1" + "&xh=" + userid['username']
     couse_url = "http://jwgl.ouc.edu.cn/student/wsxk.xskcb.jsp?params=" + base64encode(params).decode()
     application_url = "http://jwgl.ouc.edu.cn/taglib/DataTable.jsp?tableId=" + '6149'
     headers['Cookie'] = getYzm(yzm_url)
