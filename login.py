@@ -2,6 +2,8 @@ import hashlib
 import base64
 import requests
 import  time
+import json
+import sys
 from cookie_yzm import  getYzm
 from oucSpider import  getCouse
 from  oucSpider import  getApplication
@@ -43,7 +45,7 @@ def hex_md5(message):
    return  hashlib.md5(message.encode(encoding='UTF-8')).hexdigest()
 
 def doLogin():
-    randnumber =  input("请输入验证码: ")
+    randnumber =  input("请输入验证码:")
     p_username = "_u" + randnumber
     p_password = "_p" + randnumber
     _sessionid = headers['Cookie']
@@ -63,6 +65,10 @@ def doLogin():
     }
     print("使用Cookie", _sessionid)
     res = requests.post(url=login_url, headers=headers, data=datas)
+    resmsg  = json.loads(res.text)
+    if resmsg['status']!='200':
+        print("登录遇到了问题: ", res.text)
+        sys.exit(0)
     print(res.text)
 
 if __name__ == '__main__':
